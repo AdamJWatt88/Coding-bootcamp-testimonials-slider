@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+:root {
+    --box-shadow: 0px 0px 50px rgba(0, 0 , 0, .1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F0F8FF;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.slide {
+    background-color: #fff;
+    background-image: url(images/pattern-curve.svg);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 300px 100px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 400px;
+    width: 700px;
+    padding: 200px;
+}
+
+.profile-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    right: 25px;
+    height: 300px;
+    width: 300px;
+    background-image: url(images/pattern-bg.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.profile-photo {
+    box-shadow: var(--box-shadow);
+    height: 250px;
+    width: 250px;
+}
+
+.nav-container {
+    position: absolute;
+    bottom: 15px;
+    left: 50px;
+    display: flex;
+    background-color: #fff;
+    z-index: 20;
+    border-radius: 10px;
+}
+
+.nav-btn {
+    cursor: pointer;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 40px;
+    border: none;
+    background-color: #fff;
+    outline: none;
+}
+
+.nav-btn:active {
+    transform: scale(.9);
+}
+
+.prev {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.next {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.text-container {
+    position: absolute;
+    left: 25px;
+    background-image: url(images/pattern-quotes.svg);
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    background-position: 25% 0%;
+    width: 400px;
+    height: 200px;
+    z-index: 10;
+}
+
+.name {
+    font-weight: bolder;
+}
+
+.job-title {
+    font-weight: bolder;
+    color: #87CEEB;
+}
+
+/* hides away all slides that are not current */
+.hide {
+    display: none;
+}
+
+.attribution {
+    position: absolute;
+    bottom: 0;
+}
