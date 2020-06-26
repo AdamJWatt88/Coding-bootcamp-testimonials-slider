@@ -7,11 +7,6 @@
 // create functions for eventListeners on prev and next buttons to add hide and remove hide class
 
 
-
-
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-
 const people = [{
     quote: ' " ' + "I've been interested in coding for a while but never taken the jump, until now. I couldn't recommend this course enough. I'm now in the job of my dreams and so excited about the future." + ' " ',
     name: "Tanya Sinclair",
@@ -46,8 +41,8 @@ function createSlides() {
         <div class="profile-container">
         <img class="profile-photo" src="${person.image}" alt="" />
         <div class="nav-container">
-          <button id="prev" class="nav-btn prev"><img src="images/icon-prev.svg" alt="Prev"/></button>
-        <button id="next" class="nav-btn next"><img src="images/icon-next.svg" alt="Next"/></button>
+          <button class="nav-btn prev"><img src="images/icon-prev.svg" alt="Prev"/></button>
+        <button class="nav-btn next"><img src="images/icon-next.svg" alt="Next"/></button>
         </div>
         
       </div>
@@ -81,7 +76,9 @@ function addToDOM() {
 // each time classList(hide) needs to be removed 
 function prevSlide() {
 
-  document.body.querySelector('.slide')
+  if (document.body.querySelector('.slide').getAttribute('data-index') == 0 ) {
+    document.body.querySelector('.slide').classList.add('hide')
+  }
 
     // document.body.querySelectorAll('.slide').forEach(slide => {
   //   if (slide === document.body.querySelector('.slide' div:nth-child(1) )) {
@@ -92,7 +89,7 @@ function prevSlide() {
 
 }
 
-prevSlide()
+// prevSlide()
 
 
 
@@ -105,5 +102,5 @@ function nextSlide() {
 
 
 
-document.querySelector('.prev').addEventListener('click', () => prevSlide)
-document.querySelector('.next').addEventListener('click', () => console.log('next'))
+document.body.querySelector('.prev').addEventListener('click', () => prevSlide)
+document.body.querySelector('.next').addEventListener('click', () => console.log('next'))
