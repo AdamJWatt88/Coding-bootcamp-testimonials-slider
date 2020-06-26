@@ -124,3 +124,29 @@ body {
     position: absolute;
     bottom: 0;
 }
+
+@media (max-width: 500px) {
+    .slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 100vh;
+    }
+
+    .profile-container {
+        position: absolute;
+        top: 25px;
+       
+    }
+
+    .text-container {
+        position: absolute;
+        bottom: 25px;
+    }
+
+    .hide {
+        display: none;
+    }
+}

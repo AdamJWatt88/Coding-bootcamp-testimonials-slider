@@ -1,12 +1,3 @@
-// store each person in objects X
-// make function to create slides X
-// add forEach loop into slides function X
-// for each slide made push onto an array to keep track of shown slide and hidden slide X
-// when slide is slides[0] display in DOM. when slide is any other in array, add hide class to div.slide X
-// remove and add hide class to slides
-// create functions for eventListeners on prev and next buttons to add hide and remove hide class
-
-
 const people = [{
     quote: ' " ' + "I've been interested in coding for a while but never taken the jump, until now. I couldn't recommend this course enough. I'm now in the job of my dreams and so excited about the future." + ' " ',
     name: "Tanya Sinclair",
@@ -27,6 +18,9 @@ const people = [{
   }
 ]
 
+// keep track of current slide
+let activeSlide = 0;
+
 const slides = [];
 
 
@@ -41,8 +35,8 @@ function createSlides() {
         <div class="profile-container">
         <img class="profile-photo" src="${person.image}" alt="" />
         <div class="nav-container">
-          <button class="nav-btn prev"><img src="images/icon-prev.svg" alt="Prev"/></button>
-        <button class="nav-btn next"><img src="images/icon-next.svg" alt="Next"/></button>
+          <button class="nav-btn prev" onclick="prevSlide()"><img src="images/icon-prev.svg" alt="Prev"/></button>
+        <button class="nav-btn next" onclick="nextSlide()"><img src="images/icon-next.svg" alt="Next"/></button>
         </div>
         
       </div>
@@ -56,13 +50,15 @@ function createSlides() {
     slides.push(div)
   })
 
-  addToDOM()
+  // addToDOM()
 }
 
-createSlides()
+// createSlides()
+addToDOM()
 
 // apply hide class to every slide that is NOT index of [0]
 function addToDOM() {
+  createSlides()
   slides.forEach( (slide, index) => {
     document.body.appendChild(slide)
     if (index !== 0) {
@@ -72,35 +68,26 @@ function addToDOM() {
 }
 
 
-// if slide is index 0 go to slide -1. this is last slide. if slide is -1 then slide minus 1
-// each time classList(hide) needs to be removed 
-function prevSlide() {
+function prevSlide () {
+  slides[activeSlide].classList.add('hide')
 
-  if (document.body.querySelector('.slide').getAttribute('data-index') == 0 ) {
-    document.body.querySelector('.slide').classList.add('hide')
+  activeSlide = activeSlide - 1;
+
+  if(activeSlide === -1) {
+    activeSlide = slides.length - 1;
   }
 
-    // document.body.querySelectorAll('.slide').forEach(slide => {
-  //   if (slide === document.body.querySelector('.slide' div:nth-child(1) )) {
-  //     slide.style.border = "5px solid green";
-  //   }
-  // })
-
-
+  slides[activeSlide].classList.remove('hide') 
 }
 
-// prevSlide()
+function nextSlide () {
+  slides[activeSlide].classList.add('hide');
 
+  activeSlide = activeSlide + 1;
 
+  if(slides.length - 1 < activeSlide) {
+    activeSlide = 0;
+  }
 
-
-// if slide is index 0 go to slide[1]. if slide is -1 then go to slide[0]
-// each time classList(hide) needs to be removed
-function nextSlide() {
-
+  slides[activeSlide].classList.remove('hide');
 }
-
-
-
-document.body.querySelector('.prev').addEventListener('click', () => prevSlide)
-document.body.querySelector('.next').addEventListener('click', () => console.log('next'))
