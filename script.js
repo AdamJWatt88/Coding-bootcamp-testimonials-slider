@@ -37,9 +37,10 @@ const slides = [];
 
 // loop through people and make a div.slide and push to slides
 function createSlides() {
-  people.forEach(person => {
+  people.forEach( (person, index) => {
     const div = document.createElement('div');
     div.classList.add('slide');
+    div.setAttribute('data-index', index)
     div.innerHTML =
       `
         <div class="profile-container">
@@ -67,7 +68,7 @@ createSlides()
 
 // apply hide class to every slide that is NOT index of [0]
 function addToDOM() {
-  slides.forEach((slide, index) => {
+  slides.forEach( (slide, index) => {
     document.body.appendChild(slide)
     if (index !== 0) {
       slide.classList.add('hide')
@@ -80,18 +81,21 @@ function addToDOM() {
 // each time classList(hide) needs to be removed 
 function prevSlide() {
 
-  if(document.body.querySelectorAll('.slide nth-of-type') === 0 ) {
-    classList.add('hide')
-  }
+  document.body.querySelector('.slide')
 
-
-  // document.body.querySelectorAll('.slide').forEach(slide => {
+    // document.body.querySelectorAll('.slide').forEach(slide => {
   //   if (slide === document.body.querySelector('.slide' div:nth-child(1) )) {
   //     slide.style.border = "5px solid green";
   //   }
   // })
 
+
 }
+
+prevSlide()
+
+
+
 
 // if slide is index 0 go to slide[1]. if slide is -1 then go to slide[0]
 // each time classList(hide) needs to be removed
@@ -99,7 +103,7 @@ function nextSlide() {
 
 }
 
-prevSlide()
 
-document.querySelector('.prev').addEventListener('click', () => console.log('prev'))
+
+document.querySelector('.prev').addEventListener('click', () => prevSlide)
 document.querySelector('.next').addEventListener('click', () => console.log('next'))
