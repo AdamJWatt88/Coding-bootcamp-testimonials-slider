@@ -29,7 +29,6 @@ function createSlides() {
   people.forEach( (person, index) => {
     const div = document.createElement('div');
     div.classList.add('slide');
-    div.setAttribute('data-index', index)
     div.innerHTML =
       `
         <div class="profile-container">

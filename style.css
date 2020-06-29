@@ -126,27 +126,33 @@ body {
 }
 
 @media (max-width: 500px) {
+
+
     .slide {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         width: 200px;
-        height: 100vh;
+        height: 600px;
     }
 
     .profile-container {
         position: absolute;
         top: 25px;
-       
+    }
+
+    .nav-container {
+        transform: translate(50px);
     }
 
     .text-container {
         position: absolute;
         bottom: 25px;
+        text-align: center;
+        width: 300px;
+        margin-left: 40px;
     }
 
     .hide {
         display: none;
     }
+
 }
